@@ -24,9 +24,13 @@ public class HomeActivity extends Activity {
         homeList.add("Pub page example");
         homeList.add("Beer page example");
         homeList.add("Camera");
+        activities.add(CameraActivity.class);
         homeList.add("HTTP Stuff");
+        activities.add(HTTPStuffActivity.class);
         homeList.add("Binnie Tests");
+        activities.add(BinnieTestActivity.class);
         homeList.add("Chris Tests");
+        activities.add(ChrisTestActivity.class);
 
         ListView homeListView = (ListView)findViewById(R.id.home_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.simple_list_item_1, homeList);
@@ -42,7 +46,7 @@ public class HomeActivity extends Activity {
         }
 
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            if(activities.contains(i)){
+            if(activities.size() > i){
                 Intent intent = new Intent(parent, activities.get(i));
                 startActivity(intent);
             }
