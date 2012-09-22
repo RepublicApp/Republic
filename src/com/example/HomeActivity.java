@@ -12,6 +12,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        System.out.println("Hello there Binnie!");
+
+        System.out.println("Hello there Knotty!");
     }
 }
