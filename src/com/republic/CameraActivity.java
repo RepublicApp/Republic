@@ -2,16 +2,21 @@ package com.republic;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Picture;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends Activity implements Camera.PictureCallback {
     private SurfaceView     preview = null;
     private SurfaceHolder   previewHolder = null;
     private Camera          camera = null;
@@ -60,5 +65,24 @@ public class CameraActivity extends Activity {
         previewHolder.addCallback(surfaceCallback);
         previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         preview.setLayoutParams(params);
+    }
+
+    public void takePhoto(View view){
+        System.out.println("");
+        camera.takePicture(null, null, this);
+    }
+
+    @Override
+    public void onPictureTaken(byte[] bytes, Camera camera) {
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        int size = Math.min(bitmap.getWidth(), bitmap.getHeight());
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0, size, size);
+        bitmap = Bitmap.createScaledBitmap(bitmap, 128, 128, false);
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteStream);
+        UploadPhoto uploadPhoto = new UploadPhoto(byteStream.toByteArray());
+        uploadPhoto.execute();
+
+        camera.startPreview();
     }
 }
