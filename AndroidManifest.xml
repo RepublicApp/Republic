@@ -16,5 +16,9 @@
         <activity android:name=".MapActivity"/>
         <activity android:name=".BeerExampleActivity"/>
         <activity android:name=".PubExampleActivity"/>
+        <activity android:name=".CameraActivity"/>
+        <activity android:name=".HTTPStuffActivity"/>
+        <activity android:name=".BinnieTestActivity"/>
+        <activity android:name=".ChrisTestActivity"/>
     </application>
 </manifest>
