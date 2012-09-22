@@ -21,8 +21,11 @@ public class HomeActivity extends Activity {
         homeList.add("User Profile");
         activities.add(ProfileActivity.class);
         homeList.add("Map");
+        activities.add(MapActivity.class);
         homeList.add("Pub page example");
+        activities.add(PubExampleActivity.class);
         homeList.add("Beer page example");
+        activities.add(BeerExampleActivity.class);
         homeList.add("Camera");
         activities.add(CameraActivity.class);
         homeList.add("HTTP Stuff");
