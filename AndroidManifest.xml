@@ -13,5 +13,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity"/>
+        <activity android:name=".MapActivity"/>
+        <activity android:name=".BeerExampleActivity"/>
+        <activity android:name=".PubExampleActivity"/>
     </application>
 </manifest>

@@ -21,8 +21,11 @@ public class HomeActivity extends Activity {
         homeList.add("User Profile");
         activities.add(ProfileActivity.class);
         homeList.add("Map");
+        activities.add(MapActivity.class);
         homeList.add("Pub page example");
+        activities.add(PubExampleActivity.class);
         homeList.add("Beer page example");
+        activities.add(BeerExampleActivity.class);
         homeList.add("Camera");
         homeList.add("HTTP Stuff");
         homeList.add("Binnie Tests");
@@ -42,7 +45,7 @@ public class HomeActivity extends Activity {
         }
 
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            if(activities.contains(i)){
+            if(activities.size() > i){
                 Intent intent = new Intent(parent, activities.get(i));
                 startActivity(intent);
             }
