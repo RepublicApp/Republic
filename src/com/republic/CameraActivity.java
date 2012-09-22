@@ -1,6 +1,7 @@
 package com.republic;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -10,13 +11,6 @@ import android.view.ViewGroup;
 
 import java.io.IOException;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Binnie
- * Date: 22/09/12
- * Time: 17:17
- * To change this template use File | Settings | File Templates.
- */
 public class CameraActivity extends Activity {
     private SurfaceView     preview = null;
     private SurfaceHolder   previewHolder = null;
@@ -55,6 +49,7 @@ public class CameraActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         preview = (SurfaceView)findViewById(R.id.camera_surface);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);

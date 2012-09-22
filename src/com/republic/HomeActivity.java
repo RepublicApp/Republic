@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements AdapterView.OnItemClickListener {
     private ArrayList<Class> activities = new ArrayList<Class>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,21 +38,14 @@ public class HomeActivity extends Activity {
         ListView homeListView = (ListView)findViewById(R.id.home_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomeActivity.this, android.R.layout.simple_list_item_1, homeList);
         homeListView.setAdapter(adapter);
-        homeListView.setOnItemClickListener(new HomeListListener(this));
+        homeListView.setOnItemClickListener(this);
     }
 
-    private class HomeListListener implements AdapterView.OnItemClickListener{
-        HomeActivity parent;
-
-        public HomeListListener(HomeActivity parent){
-            this.parent = parent;
-        }
-
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            if(activities.size() > i){
-                Intent intent = new Intent(parent, activities.get(i));
-                startActivity(intent);
-            }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if(activities.size() > i){
+            Intent intent = new Intent(this, activities.get(i));
+            startActivity(intent);
         }
     }
 }
